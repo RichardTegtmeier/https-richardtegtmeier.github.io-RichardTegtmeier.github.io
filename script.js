@@ -43,6 +43,5 @@ function updateScores() {
 document.addEventListener('DOMContentLoaded', (event) => {
 	updateScores();
 });
-
 // Call the updateScores function periodically (for demonstration purposes)
 // setInterval(updateScores, 5000); // Update every 5 seconds
