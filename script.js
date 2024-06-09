@@ -17,54 +17,33 @@ function getIconForScore(score) {
 // Function to update scores and icons dynamically
 function updateScores() {
     // Fetch new scores from a server or update manually
-    const scores = {
-        player1: 50,
-        player2: 10,
-        player3: 20,
-        player4: 20,
-        player5: 0
-    };
+    const scores = [
+        { name: "Tim", score: 40 },
+        { name: "Boris3 (Mo)", score: 10 },
+        { name: "GOOCH (Sri)", score: 20 },
+        { name: "Maggie", score: 20 },
+        { name: "Jack", score: 0 }
+    ];
 
-    // Convert scores object to an array and sort by score descending
-    const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    // Sort scores in descending order based on score
+    scores.sort((a, b) => b.score - a.score);
 
-    // Get the players container
-    const container = document.querySelector('.players');
+    const playersContainer = document.querySelector('.players');
+    playersContainer.innerHTML = ''; // Clear existing players
 
-    // Clear the container
-    container.innerHTML = '';
-
-    sortedScores.forEach(([player, score]) => {
-        // Select the existing player element
-        const playerElement = document.getElementById(player);
-
-        // Update the bar width
-        const bar = playerElement.querySelector('.bar');
-        bar.style.width = `${score}%`;
-
-        // Update the icon source
-        const icon = playerElement.querySelector('.icon img');
-        icon.src = getIconForScore(score);
-
-        // Update the score display
-        const scoreDisplay = playerElement.querySelector('.score');
-        if (scoreDisplay) {
-            scoreDisplay.textContent = score;
-        } else {
-            const scoreElement = document.createElement('div');
-            scoreElement.className = 'score';
-            scoreElement.textContent = score;
-            playerElement.appendChild(scoreElement);
-        }
-
-        // Append the player element to the container
-        container.appendChild(playerElement);
+    // Iterate through sorted scores to update HTML
+    scores.forEach((player, index) => {
+        const playerElement = document.createElement('div');
+        playerElement.classList.add('player');
+        playerElement.innerHTML = `
+            <div class="name">${player.name}</div>
+            <div class="score-bar"><div class="bar" style="width: ${player.score}%;"></div></div>
+            <div class="icon"><img src="${getIconForScore(player.score)}" alt="Progress Icon"></div>
+        `;
+        playersContainer.appendChild(playerElement);
     });
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
     updateScores();
 });
-
-// Call the updateScores function periodically (for demonstration purposes)
-// setInterval(updateScores, 5000); // Update every 5 seconds
