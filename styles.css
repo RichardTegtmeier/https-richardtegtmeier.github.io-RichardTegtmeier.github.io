@@ -1,0 +1,274 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #ffcb05, #3b4cca);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.scoreboard {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease-in-out;
+    border: 5px solid #3b4cca;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 700;
+    color: #ffcb05;
+    text-shadow: 2px 2px #3b4cca;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3b4cca;
+    border-right: 5px solid #ffcb05;
+}
+
+.name {
+    flex: 1;
+    min-width: 100px;
+    margin-right: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #3b4cca;
+}
+
+.score-bar {
+    background-color: #ddd;
+    flex: 4;
+    margin: 0 10px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+}
+
+.bar {
+    background: linear-gradient(to right, #ff0000, #ffcb05);
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+}
+
+.icon {
+    width: 90px;
+    height: 90px;
+    flex: 0 0 90px;
+    margin-left: 10px;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.progress-bar {
+    width: 100%;
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #3b4cca;
+}
+
+.progress-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-icons .icon-frame {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #3b4cca;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.progress-icons .icon-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.progress-icons .icon-frame:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .header {
+        font-size: 1.5em;
+    }
+
+    .player {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .name {
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    .score-bar {
+        margin: 10px 0;
+        width: 100%;
+    }
+    
+    .icon {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .progress-icons .icon-frame {
+        width: 40px;
+        height: 40px;
+    }
+
+    .progress-icons img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    .scoreboard {
+        max-width: 1000px;
+        padding: 40px;
+    }
+
+    .header {
+        font-size: 2.5em;
+    }
+
+    .player {
+        margin-bottom: 15px;
+    }
+
+    .name {
+        font-size: 1.5em;
+    }
+
+    .score-bar {
+        height: 25px;
+    }
+
+    .bar {
+        height: 25px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .icon img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .progress-icons .icon-frame {
+        width: 60px;
+        height: 60px;
+    }
+
+    .progress-icons img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
+
+@media (min-width: 1201px) {
+    .scoreboard {
+        max-width: 1200px;
+        padding: 50px;
+    }
+
+    .header {
+        font-size: 3em;
+    }
+
+    .player {
+        margin-bottom: 20px;
+    }
+
+    .name {
+        font-size: 1.8em;
+    }
+
+    .score-bar {
+        height: 30px;
+    }
+
+    .bar {
+        height: 30px;
+    }
+
+    .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .icon img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .progress-icons .icon-frame {
+        width: 70px;
+        height: 70px;
+    }
+
+    .progress-icons img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
