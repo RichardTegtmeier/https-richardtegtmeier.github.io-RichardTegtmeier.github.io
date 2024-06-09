@@ -17,33 +17,32 @@ function getIconForScore(score) {
 // Function to update scores and icons dynamically
 function updateScores() {
     // Fetch new scores from a server or update manually
-    const scores = [
-        { name: "Tim", score: 40 },
-        { name: "Boris3 (Mo)", score: 10 },
-        { name: "GOOCH (Sri)", score: 20 },
-        { name: "Maggie", score: 20 },
-        { name: "Jack", score: 0 }
-    ];
+    const scores = {
+        player1: 40,
+        player2: 10,
+        player3: 20,
+        player4: 20,
+        player5: 0
+    };
 
-    // Sort scores in descending order based on score
-    scores.sort((a, b) => b.score - a.score);
+    for (const [player, score] of Object.entries(scores)) {
+        const bar = document.querySelector(`#${player} .bar`);
+        const newWidth = `${score}%`;
+        if (bar.style.width !== newWidth) {
+            bar.style.width = newWidth;
+        }
 
-    const playersContainer = document.querySelector('.players');
-    playersContainer.innerHTML = ''; // Clear existing players
-
-    // Iterate through sorted scores to update HTML
-    scores.forEach((player, index) => {
-        const playerElement = document.createElement('div');
-        playerElement.classList.add('player');
-        playerElement.innerHTML = `
-            <div class="name">${player.name}</div>
-            <div class="score-bar"><div class="bar" style="width: ${player.score}%;"></div></div>
-            <div class="icon"><img src="${getIconForScore(player.score)}" alt="Progress Icon"></div>
-        `;
-        playersContainer.appendChild(playerElement);
-    });
+        const icon = document.querySelector(`#${player} .icon img`);
+        const newIconSrc = getIconForScore(score);
+        if (icon.src !== newIconSrc) {
+            icon.src = newIconSrc;
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    updateScores();
+	updateScores();
 });
+
+// Call the updateScores function periodically (for demonstration purposes)
+// setInterval(updateScores, 5000); // Update every 5 seconds
