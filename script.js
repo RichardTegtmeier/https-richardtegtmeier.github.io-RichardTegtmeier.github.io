@@ -25,7 +25,14 @@ function updateScores() {
         player5: 0
     };
 
-    for (const [player, score] of Object.entries(scores)) {
+    // Convert scores object to an array of objects for sorting
+    const scoresArray = Object.entries(scores).map(([player, score]) => ({ player, score }));
+
+    // Sort scores in descending order based on score
+    scoresArray.sort((a, b) => b.score - a.score);
+
+    // Iterate over sorted scores to update dynamically
+    scoresArray.forEach(({ player, score }) => {
         const bar = document.querySelector(`#${player} .bar`);
         const newWidth = `${score}%`;
         if (bar.style.width !== newWidth) {
@@ -37,11 +44,9 @@ function updateScores() {
         if (icon.src !== newIconSrc) {
             icon.src = newIconSrc;
         }
-    }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-	updateScores();
+    updateScores();
 });
-// Call the updateScores function periodically (for demonstration purposes)
-// setInterval(updateScores, 5000); // Update every 5 seconds
