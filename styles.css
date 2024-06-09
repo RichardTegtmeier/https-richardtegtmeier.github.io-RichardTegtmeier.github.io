@@ -76,8 +76,9 @@ body {
 
 .bar {
     background: linear-gradient(to right, #ff0000, #ffcb05);
-    height: 20px;
-    border-radius: 5px 0 0 5px;
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
 }
 
 .icon {
