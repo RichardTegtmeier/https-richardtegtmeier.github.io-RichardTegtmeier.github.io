@@ -18,8 +18,8 @@ function getIconForScore(score) {
 function updateScores() {
     // Fetch new scores from a server or update manually
     const scores = {
-        player2: 40,
-        player1: 10,
+        player1: 40,
+        player2: 10,
         player3: 20,
         player4: 20,
         player5: 0
